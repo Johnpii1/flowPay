@@ -4,20 +4,20 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-sm border-2 border-foreground text-sm font-black uppercase tracking-wide ring-offset-background transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:translate-x-[2px] active:translate-y-[2px]",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-primary text-primary-foreground neo-shadow-sm hover:-translate-y-0.5",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-destructive text-destructive-foreground neo-shadow-sm hover:-translate-y-0.5",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+          "bg-background text-foreground neo-shadow-sm hover:bg-accent",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        somnia: "bg-gradient-to-r from-somnia-500 to-somnia-600 text-white hover:from-somnia-600 hover:to-somnia-700 shadow-lg",
+          "bg-secondary text-secondary-foreground neo-shadow-sm hover:-translate-y-0.5",
+        ghost: "bg-transparent border-transparent font-bold hover:bg-accent hover:border-foreground",
+        link: "text-primary underline underline-offset-4 border-transparent",
+        somnia: "bg-accent text-accent-foreground neo-shadow-sm hover:-translate-y-0.5",
       },
       size: {
         default: "h-10 px-4 py-2",

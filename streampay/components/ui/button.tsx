@@ -4,25 +4,29 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-sm border-2 border-foreground text-sm font-black uppercase tracking-wide ring-offset-background transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:translate-x-[2px] active:translate-y-[2px]",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-lg border-2 border-foreground text-sm font-black uppercase tracking-wide ring-offset-background transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:translate-x-[2px] active:translate-y-[2px]",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground neo-shadow-sm hover:-translate-y-0.5",
+        default:
+          "bg-primary text-primary-foreground neo-shadow-sm hover:-translate-y-0.5",
         destructive:
           "bg-destructive text-destructive-foreground neo-shadow-sm hover:-translate-y-0.5",
         outline:
           "bg-background text-foreground neo-shadow-sm hover:bg-accent",
         secondary:
           "bg-secondary text-secondary-foreground neo-shadow-sm hover:-translate-y-0.5",
-        ghost: "bg-transparent border-transparent font-bold hover:bg-accent hover:border-foreground",
-        link: "text-primary underline underline-offset-4 border-transparent",
-        somnia: "bg-accent text-accent-foreground neo-shadow-sm hover:-translate-y-0.5",
+        ghost:
+          "bg-transparent border-transparent font-bold hover:bg-accent hover:border-foreground",
+        link:
+          "text-primary underline underline-offset-4 border-transparent",
+        somnia:
+          "bg-accent text-accent-foreground neo-shadow-sm hover:-translate-y-0.5",
       },
       size: {
         default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
+        sm: "h-9 rounded-lg px-3",
+        lg: "h-11 rounded-lg px-8",
         icon: "h-10 w-10",
       },
     },
@@ -42,6 +46,7 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
+
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
@@ -51,6 +56,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     )
   }
 )
+
 Button.displayName = "Button"
 
 export { Button, buttonVariants }

@@ -33,17 +33,17 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b-2 border-foreground bg-background/95">
+      <div className="container flex h-20 items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2 rounded-sm border-2 border-foreground bg-accent px-3 py-2 neo-shadow-sm transition-transform hover:-translate-y-0.5">
           <div className="relative">
             <Zap className="h-8 w-8 text-somnia-500" />
             <div className="absolute inset-0 animate-pulse-glow">
               <Zap className="h-8 w-8 text-somnia-400 opacity-50" />
             </div>
           </div>
-          <span className="font-bold text-xl bg-gradient-to-r from-somnia-500 to-somnia-700 bg-clip-text text-transparent">
+          <span className="font-black text-xl uppercase tracking-wide text-foreground">
             StreamPay
           </span>
         </Link>
@@ -121,7 +121,7 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t bg-background/95 backdrop-blur"
+            className="md:hidden border-t-2 border-foreground bg-background neo-enter"
           >
             <div className="container py-4 space-y-2">
               {navigation.map((item) => {

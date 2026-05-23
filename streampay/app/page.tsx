@@ -41,11 +41,20 @@ export default function Dashboard() {
   const { address, isConnected } = useAccount();
   const [mounted, setMounted] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [demoFlow, setDemoFlow] = useState(0.0025);
 
   // Handle hydration properly
   useEffect(() => {
     setMounted(true);
     setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDemoFlow((prev) => (prev >= 0.0095 ? 0.0025 : Number((prev + 0.0005).toFixed(4))));
+    }, 1500);
+
+    return () => clearInterval(interval);
   }, []);
 
   // Only fetch data after component is mounted and on client
@@ -111,6 +120,27 @@ export default function Dashboard() {
                 <span>Work, subscription & gaming streams</span>
               </div>
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="mt-6 rounded-lg border-2 border-foreground bg-card p-4 neo-shadow"
+            >
+              <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground mb-3">
+                Live stream simulator
+              </p>
+              <div className="h-3 w-full rounded-lg border-2 border-foreground bg-muted overflow-hidden">
+                <motion.div
+                  className="h-full bg-accent"
+                  animate={{ width: `${Math.min((demoFlow / 0.01) * 100, 100)}%` }}
+                  transition={{ type: 'spring', stiffness: 130, damping: 20 }}
+                />
+              </div>
+              <p className="mt-3 text-sm font-semibold text-foreground">
+                Streaming at <span className="text-primary">{demoFlow.toFixed(4)} STT/sec</span>
+              </p>
+            </motion.div>
           </div>
         </div>
       </motion.div>
